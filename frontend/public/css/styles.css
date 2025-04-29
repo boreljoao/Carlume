@@ -1,0 +1,154 @@
+:root {
+    --carlume-primary: #4e73df;
+    --carlume-dark: #2c3e50;
+    --carlume-light: #f8f9fa;
+}
+
+/* Header Fixo */
+header {
+    transition: all 0.3s ease;
+}
+.offcanvas-body{
+    align-items: center;
+    flex-direction: column;
+    
+}
+.offcanvas-custom-width{
+    width: 300px !important;
+}
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1280&q=80');
+    background-size: cover;
+    background-position: center;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+}
+
+/* Cards de Carros */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Botões */
+.btn {
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--carlume-primary);
+    border-color: var(--carlume-primary);
+}
+
+.btn-primary:hover {
+    background-color: #3a5bc7;
+    border-color: #3a5bc7;
+}
+
+/* Formulário */
+#add-car-form {
+    transition: opacity 0.3s ease;
+}
+
+/* Footer */
+footer {
+    background-color: var(--carlume-dark);
+}
+
+.social-links a {
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--carlume-primary) !important;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .hero-section {
+      min-height: 250px;
+      padding: 60px 0;
+    }
+    
+    .hero-section h1 {
+      font-size: 2rem;
+    }
+    
+    .hero-section p {
+      font-size: 1rem;
+    }
+  }
+  
+  /* Seção de Carros */
+  @media (max-width: 576px) {
+    #car-grid .col-md-4 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+  
+  @media (min-width: 576px) and (max-width: 992px) {
+    #car-grid .col-md-4 {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+  }
+  
+  /* Cards */
+  .card {
+    transition: transform 0.3s ease;
+    margin-bottom: 20px;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  @media (max-width: 768px) {
+    .card {
+      margin-bottom: 15px;
+    }
+  }
+  
+  /* Formulário */
+  @media (max-width: 768px) {
+    #add-car-form .col-md-6, 
+    #add-car-form .col-md-4 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+  
+  /* Footer */
+  @media (max-width: 768px) {
+    footer .col-md-4 {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    
+    footer .social-links {
+      justify-content: center;
+    }
+    
+    footer hr {
+      margin: 20px 0;
+    }
+  }
