@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carlume | Adicionar Carro</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS Customizado -->
+    <link rel="stylesheet" href="/frontend/public/css/styles.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/frontend/public/images/favicon.svg">
+</head>
+<body>
+    <!-- Header Fixo (igual ao index.html) -->
+    <header class="sticky-top bg-white shadow-sm">
+        <nav class="navbar navbar-expand-lg py-4">
+          <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand fw-bold fs-3 text-primary" href="/frontend/public/index.html">
+              <i class="fas fa-car me-2"></i>Carlume
+            </a>
+      
+            <!-- Botão Hamburguer só no mobile -->
+            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+      
+            <!-- Navbar normal Desktop -->
+            <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarContent">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center">
+                
+                <li class="nav-item mx-2">
+                  <a class="nav-link text-dark d-flex align-items-center active" href="/frontend/public/adicionar.html">
+                    <span class="badge rounded-circle bg-success me-2 p-2">
+                      <i class="bi bi-plus-lg text-white"></i>
+                    </span>
+                    Adicionar
+                  </a>
+                </li>
+                <li class="nav-item mx-2">
+                  <a class="nav-link text-dark" href="/frontend/public/estoque.html">Estoque</a>
+                </li>
+                <li class="nav-item mx-2" id="login-item">
+                  <a class="btn btn-success" href="#" id="login-btn">Login</a>
+                </li>
+                <li class="nav-item mx-2" id="register-item">
+                  <a class="btn btn-dark" href="#" id="register-btn">Register</a>
+                </li>
+                <li class="nav-item mx-2 d-none" id="profile-item">
+                  <a class="btn btn-primary" href="#" id="profile-btn">Perfil</a>
+                </li>
+                <li class="nav-item mx-2 d-none" id="logout-item">
+                  <a class="btn btn-danger" href="#" id="logout-btn">Logout</a>
+                </li>
+                <li class="nav-item mx-2">
+                    <button class="btn btn-sm btn-outline-secondary" id="theme-toggle">
+                      <i class="fas fa-moon"></i> Tema
+                    </button>
+                  </li>
+              </ul>
+              
+            </div>
+      
+            <!-- Offcanvas só para mobile -->
+            <div class="offcanvas offcanvas-custom-width offcanvas-end d-lg-none" tabindex="-1" id="offcanvasNavbar">
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title text-primary">Menu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+              </div>
+              <div class="offcanvas-body d-flex flex-column align-items-center justify-content-center text-center">
+                <ul class="navbar-nav w-100">
+                  <li class="nav-item mb-3">
+                    <a class="nav-link text-dark d-flex align-items-center justify-content-center active" href="/frontend/public/adicionar.html">
+                      <span class="badge rounded-circle bg-success me-2 p-2">
+                        <i class="bi bi-plus-lg text-white"></i>
+                      </span>
+                      Adicionar
+                    </a>
+                  </li>
+                  <li class="nav-item mb-3">
+                    <a class="nav-link text-dark d-flex justify-content-center" href="/frontend/public/estoque.html">Estoque</a>
+                  </li>
+                  <li class="nav-item mb-3" id="login-item-off">
+                    <a class="btn btn-success w-100" href="#" id="login-btn-off">Login</a>
+                  </li>
+                  <li class="nav-item mb-3" id="register-item-off">
+                    <a class="btn btn-dark w-100" href="#" id="register-btn-off">Register</a>
+                  </li>
+                  <li class="nav-item mb-3 d-none" id="profile-item-off">
+                    <a class="btn btn-primary w-100" href="#" id="profile-btn-off">Perfil</a>
+                  </li>
+                  <li class="nav-item mb-3 d-none" id="logout-item-off">
+                    <a class="btn btn-danger w-100" href="#" id="logout-btn-off">Logout</a>
+                  </li>
+                  <li class="nav-item mb-3">
+                    <button class="btn btn-sm btn-outline-secondary w-100" id="theme-toggle-off">
+                      <i class="fas fa-moon"></i> Tema
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+    <!-- Seção do Formulário -->
+    <section class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="mb-0"><i class="fas fa-car me-2"></i>Adicionar Novo Carro</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="add-car-form">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="marca" class="form-label">Marca</label>
+                                    <input type="text" class="form-control" id="marca" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="modelo" class="form-label">Modelo</label>
+                                    <input type="text" class="form-control" id="modelo" required>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-4">
+                                    <label for="ano" class="form-label">Ano</label>
+                                    <input type="number" class="form-control" id="ano" min="1900" max="2099" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="km" class="form-label">Quilometragem</label>
+                                    <input type="number" class="form-control" id="km" min="0" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="preco" class="form-label">Preço (R$)</label>
+                                    <input type="number" class="form-control" id="preco" min="0" step="0.01" required>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="combustivel" class="form-label">Tipo de Combustível</label>
+                                    <select class="form-select" id="combustivel" required>
+                                        <option value="" selected disabled>Selecione...</option>
+                                        <option value="gasolina">Gasolina</option>
+                                        <option value="etanol">Etanol</option>
+                                        <option value="flex">Flex</option>
+                                        <option value="diesel">Diesel</option>
+                                        <option value="eletrico">Elétrico</option>
+                                        <option value="hibrido">Híbrido</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="cambio" class="form-label">Câmbio</label>
+                                    <select class="form-select" id="cambio" required>
+                                        <option value="" selected disabled>Selecione...</option>
+                                        <option value="automatico">Automático</option>
+                                        <option value="manual">Manual</option>
+                                        <option value="semi-automatico">Semi-automático</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="fotos" class="form-label">Fotos do Carro</label>
+                                <input class="form-control" type="file" id="fotos" multiple accept="image/*">
+                                <div class="form-text">Selecione até 5 fotos do veículo</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="descricao" class="form-label">Descrição/Resumo</label>
+                                <textarea class="form-control" id="descricao" rows="4" required></textarea>
+                                <div class="form-text">Descreva as características principais do veículo</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="novo" checked>
+                                    <label class="form-check-label" for="novo">
+                                        Veículo novo (0 km)
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button type="reset" class="btn btn-secondary me-md-2">
+                                    <i class="fas fa-eraser me-1"></i> Limpar
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save me-1"></i> Salvar Carro
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (igual ao index.html) -->
+    <footer class="bg-dark text-white py-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <!-- Sobre -->
+                <div class="col-lg-4 mb-4">
+                    <h5 class="d-flex align-items-center mb-3">
+                        <i class="fas fa-car me-2 text-primary"></i>
+                        <span>Carlume</span>
+                    </h5>
+                    <p class="text-muted">O estoque de carros premium mais completo do mercado, oferecendo os melhores veículos com transparência e qualidade.</p>
+                    <div class="mt-4">
+                        <a style="text-decoration: none;" href="https://www.linkedin.com/in/boreljoao/" class="text-white me-3" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-linkedin fa-lg"></i>
+                        </a>
+                        <a style="text-decoration: none;" href="https://github.com/boreljoao" class="text-white me-3" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github fa-lg"></i>
+                        </a>
+                        <a style="text-decoration: none;" href="https://contate.me/5521972868504" class="text-white me-3" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-whatsapp fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+      
+                <!-- Links Úteis -->
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="mb-3">Links Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="/frontend/public/index.html" class="text-white-50">Início</a></li>
+                        <li class="mb-2"><a href="/frontend/public/estoque.html" class="text-white-50">Estoque</a></li>
+                        <li class="mb-2"><a href="/frontend/public/adicionar.html" class="text-white-50">Vender Carro</a></li>
+                        <li class="mb-2"><a href="#!" class="text-white-50">Financiamento</a></li>
+                        <li class="mb-2"><a href="#!" class="text-white-50">Contato</a></li>
+                    </ul>
+                </div>
+      
+                <!-- Termos e Políticas -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="mb-3">Informações Legais</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#terms-modal" data-bs-toggle="modal" class="text-white-50">Termos de Uso</a></li>
+                        <li class="mb-2"><a href="#privacy-modal" data-bs-toggle="modal" class="text-white-50">Política de Privacidade</a></li>
+                        <li class="mb-2"><a href="#warranty-modal" data-bs-toggle="modal" class="text-white-50">Garantia de Veículos</a></li>
+                        <li class="mb-2"><a href="#return-policy" data-bs-toggle="modal" class="text-white-50">Política de Devolução</a></li>
+                    </ul>
+                </div>
+      
+                <!-- Contato -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="mb-3">Contato</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2 text-primary"></i> Rio de Janeiro, Brasil</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2 text-primary"></i> (21) 97286-8504</li>
+                        <li class="mb-2"><i class="fas fa-envelope me-2 text-primary"></i> contato@carlume.com</li>
+                        <li class="mb-2"><i class="fas fa-clock me-2 text-primary"></i> Seg-Sex: 9h às 18h</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="my-4 bg-secondary">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0 text-muted">&copy; 2023 Carlume. Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end text-muted">
+                    <p class="mb-0">Desenvolvido por <a href="https://www.linkedin.com/in/boreljoao/" class="text-decoration-none" target="_blank">João Pedro Borel</a></p>
+                </div>
+            </div>
+        </div>
+      </footer>
+      
+      <!-- Modal Termos de Uso -->
+      <div class="modal fade" id="terms-modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Termos de Uso</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>1. Aceitação dos Termos</h6>
+                    <p>Ao acessar e utilizar o site Carlume, você concorda com estes Termos de Uso e com nossa Política de Privacidade.</p>
+                    
+                    <h6 class="mt-4">2. Uso do Site</h6>
+                    <p>O site destina-se à visualização e compra de veículos. Não é permitido:</p>
+                    <ul>
+                        <li>Usar para fins ilegais ou não autorizados</li>
+                        <li>Reproduzir conteúdo sem autorização</li>
+                        <li>Realizar cadastros falsos</li>
+                    </ul>
+                    
+                    <h6 class="mt-4">3. Propriedade Intelectual</h6>
+                    <p>Todos os direitos sobre o conteúdo, design e software do site são propriedade da Carlume ou de seus licenciadores.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+      </div>
+      
+      <!-- Modal Política de Privacidade -->
+      <div class="modal fade" id="privacy-modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Política de Privacidade</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>1. Dados Coletados</h6>
+                    <p>Coletamos informações pessoais como nome, e-mail, telefone e dados de veículos quando você:</p>
+                    <ul>
+                        <li>Cadastra-se no site</li>
+                        <li>Anuncia um veículo</li>
+                        <li>Entra em contato conosco</li>
+                    </ul>
+                    
+                    <h6 class="mt-4">2. Uso dos Dados</h6>
+                    <p>Seus dados são usados para:</p>
+                    <ul>
+                        <li>Processar transações</li>
+                        <li>Melhorar nossos serviços</li>
+                        <li>Enviar comunicações relevantes</li>
+                    </ul>
+                    
+                    <h6 class="mt-4">3. Segurança</h6>
+                    <p>Implementamos medidas de segurança para proteger suas informações contra acesso não autorizado.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+      </div>
+
+    <!-- Scripts (igual ao index.html) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/frontend/public/js/scripts.js"></script>
+
+    <!-- Script específico para esta página -->
+    <script>
+        // Validação do formulário
+        document.getElementById('add-car-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulação de envio
+            alert('Carro adicionado com sucesso ao estoque!');
+            
+            // Aqui você pode adicionar o código para enviar os dados para o servidor
+            // ou armazenar localmente
+            
+            // Limpa o formulário após o envio
+            this.reset();
+        });
+
+        // Atualiza a interface quando a página carrega
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verifica se o usuário está logado (simulação)
+            const isLoggedIn = false; // Altere para true se quiser simular login
+            
+            // Atualiza a UI conforme o estado de login
+            updateUI(isLoggedIn);
+        });
+
+        // Função para atualizar a interface conforme o estado de login
+        function updateUI(loggedIn) {
+            // Elementos Desktop
+            const loginItem = document.getElementById('login-item');
+            const registerItem = document.getElementById('register-item');
+            const profileItem = document.getElementById('profile-item');
+            const logoutItem = document.getElementById('logout-item');
+
+            // Elementos Mobile
+            const loginItemOff = document.getElementById('login-item-off');
+            const registerItemOff = document.getElementById('register-item-off');
+            const profileItemOff = document.getElementById('profile-item-off');
+            const logoutItemOff = document.getElementById('logout-item-off');
+
+            if (loggedIn) {
+                // Desktop
+                loginItem.classList.add('d-none');
+                registerItem.classList.add('d-none');
+                profileItem.classList.remove('d-none');
+                logoutItem.classList.remove('d-none');
+
+                // Mobile
+                loginItemOff.classList.add('d-none');
+                registerItemOff.classList.add('d-none');
+                profileItemOff.classList.remove('d-none');
+                logoutItemOff.classList.remove('d-none');
+            } else {
+                // Desktop
+                loginItem.classList.remove('d-none');
+                registerItem.classList.remove('d-none');
+                profileItem.classList.add('d-none');
+                logoutItem.classList.add('d-none');
+
+                // Mobile
+                loginItemOff.classList.remove('d-none');
+                registerItemOff.classList.remove('d-none');
+                profileItemOff.classList.add('d-none');
+                logoutItemOff.classList.add('d-none');
+            }
+        }
+    </script>
+</body>
+</html>

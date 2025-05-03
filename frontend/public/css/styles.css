@@ -28,6 +28,7 @@ header {
 }
 
 /* Cards de Carros */
+
 .card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: none;
@@ -152,3 +153,101 @@ footer {
       margin: 20px 0;
     }
   }
+
+/*Tema dark */
+
+/* Dark Theme Styles */
+body.dark-theme {
+  background-color: #121212;
+  color: #f8f9fa;
+}
+.dark-theme .form-text {
+  color: #b3b3b3 !important; /* Mesma cor dos outros textos muted */
+}
+.dark-theme .card {
+  background-color: #1e1e1e;
+  color: #f8f9fa;
+}
+.dark-theme ::placeholder{
+  color: #f8f9fa;
+}
+.dark-theme .card-header {
+  background-color: #2c3e50 !important;
+}
+
+.dark-theme .form-control,
+.dark-theme .form-select,
+.dark-theme .form-control:focus,
+.dark-theme .form-select:focus {
+  background-color: #2d2d2d;
+  color: #f8f9fa;
+  border-color: #444;
+}
+
+.dark-theme .bg-dark {
+  background-color: #1a1a1a !important;
+}
+
+.dark-theme .text-muted {
+  color: #b3b3b3 !important;
+}
+
+.dark-theme .bg-white {
+  background-color: #1e1e1e !important;
+}
+
+.dark-theme .navbar,
+.dark-theme .offcanvas {
+  background-color: #1e1e1e !important;
+}
+
+.dark-theme .nav-link,
+.dark-theme .navbar-brand {
+  color: #f8f9fa !important;
+}
+
+.dark-theme .btn-outline-secondary {
+  color: #f8f9fa;
+  border-color: #666;
+}
+
+.dark-theme .btn-outline-secondary:hover {
+  background-color: #333;
+}
+
+/* Dark Theme para Modais */
+.dark-theme .modal-content {
+  background-color: #2d2d2d;
+  color: #f8f9fa;
+  border: 1px solid #444;
+}
+
+.dark-theme .modal-header {
+  border-bottom: 1px solid #444;
+}
+
+.dark-theme .modal-footer {
+  border-top: 1px solid #444;
+}
+
+.dark-theme .form-control,
+.dark-theme .form-select {
+  background-color: #3d3d3d;
+  color: #f8f9fa;
+  border-color: #555;
+}
+
+.dark-theme .form-control:focus {
+  background-color: #3d3d3d;
+  color: #f8f9fa;
+  border-color: #4e73df;
+  box-shadow: 0 0 0 0.25rem rgba(78, 115, 223, 0.25);
+}
+
+.dark-theme .btn-close {
+  filter: invert(1);
+}
+
+.dark-theme .text-muted {
+  color: #b3b3b3 !important;
+}
