@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carlume | Estoque de Carros</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS Customizado -->
+    <link rel="stylesheet" href="/frontend/public/css/styles.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/frontend/public/images/favicon.svg">
+</head>
+<body>
+    <!-- Header Fixo -->
+    <header class="sticky-top bg-white shadow-sm">
+        <nav class="navbar navbar-expand-lg py-4">
+          <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand fw-bold fs-3 text-primary" href="index.html">
+              <i class="fas fa-car me-2"></i>Carlume
+            </a>
+      
+            <!-- Botão Hamburguer só no mobile -->
+            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+      
+            <!-- Navbar normal Desktop -->
+            <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarContent">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center">
+                <li class="nav-item mx-2">
+                  <a class="nav-link text-dark d-flex align-items-center" href="adicionar.html">
+                    <span class="badge rounded-circle bg-success me-2 p-2">
+                      <i class="bi bi-plus-lg text-white"></i>
+                    </span>
+                    Adicionar
+                  </a>
+                </li>
+                <li class="nav-item mx-2">
+                  <a class="nav-link text-dark" href="estoque.html">Estoque</a>
+                </li>
+                <li class="nav-item mx-2" id="login-item">
+                  <a class="btn btn-success" href="#" id="login-btn">Login</a>
+                </li>
+                <li class="nav-item mx-2" id="register-item">
+                  <a class="btn btn-dark" href="#" id="register-btn">Register</a>
+                </li>
+                <li class="nav-item mx-2 d-none" id="profile-item">
+                  <a class="btn btn-primary" href="#" id="profile-btn">Perfil</a>
+                </li>
+                <li class="nav-item mx-2 d-none" id="logout-item">
+                  <a class="btn btn-danger" href="#" id="logout-btn">Logout</a>
+                </li>
+                <li class="nav-item mx-2">
+                  <button class="btn btn-sm btn-outline-secondary" id="theme-toggle">
+                    <i class="fas fa-moon"></i> Tema
+                  </button>
+                </li>
+              </ul>
+            </div>
+      
+            <!-- Offcanvas só para mobile -->
+            <div class="offcanvas offcanvas-custom-width offcanvas-end d-lg-none" tabindex="-1" id="offcanvasNavbar">
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title text-primary">Menu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+              </div>
+              <div class="offcanvas-body d-flex flex-column align-items-center justify-content-center text-center">
+                <ul class="navbar-nav w-100">
+                  <li class="nav-item mb-3">
+                    <a class="nav-link text-dark d-flex align-items-center justify-content-center" href="adicionar.html">
+                      <span class="badge rounded-circle bg-success me-2 p-2">
+                        <i class="bi bi-plus-lg text-white"></i>
+                      </span>
+                      Adicionar
+                    </a>
+                  </li>
+                  <li class="nav-item mb-3">
+                    <a class="nav-link text-dark d-flex justify-content-center" href="estoque.html">Estoque</a>
+                  </li>
+                  <li class="nav-item mb-3" id="login-item-off">
+                    <a class="btn btn-success w-100" href="#" id="login-btn-off">Login</a>
+                  </li>
+                  <li class="nav-item mb-3" id="register-item-off">
+                    <a class="btn btn-dark w-100" href="#" id="register-btn-off">Register</a>
+                  </li>
+                  <li class="nav-item mb-3 d-none" id="profile-item-off">
+                    <a class="btn btn-primary w-100" href="#" id="profile-btn-off">Perfil</a>
+                  </li>
+                  <li class="nav-item mb-3 d-none" id="logout-item-off">
+                    <a class="btn btn-danger w-100" href="#" id="logout-btn-off">Logout</a>
+                  </li>
+                  <li class="nav-item mb-3">
+                    <button class="btn btn-sm btn-outline-secondary w-100" id="theme-toggle-off">
+                      <i class="fas fa-moon"></i> Tema
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+      
+          </div>
+        </nav>
+      </header>
+      
+      
+      
+
+    <!-- Hero Section (Imagem Principal) -->
+    <section class="hero-section bg-dark text-white py-5">
+        <div class="container py-5 text-center">
+            <h1 class="display-4 fw-bold">Encontre o Carro dos Seus Sonhos</h1>
+            <p class="lead">Estoque selecionado com os melhores veículos do mercado</p>
+        </div>
+    </section>
+
+    <!-- Seção de Carros (Destaques ou Estoque) -->
+    <section class="container my-5">
+      <h2 class="text-center mb-4">Carros em Destaque</h2>
+      <div class="row g-4" id="car-grid">
+          <!-- Card 1 -->
+          <div class="col-12 col-md-6 col-lg-4">
+              <div class="card h-100 shadow-sm border-0 overflow-hidden">
+                  <!-- Carrossel MODIFICADO -->
+                  <div id="carousel1" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000">
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                          <img src="/frontend/public/images/porsche-front.jpg" loading="lazy" class="d-block w-100" alt="Sedan X" style="height: 200px; object-fit: cover;">
+                      </div>
+                      <div class="carousel-item">
+                          <img src="/frontend/public/images/porsche-back.jpg" loading="lazy" class="d-block w-100" alt="Sedan X" style="height: 200px; object-fit: cover;">
+                      </div>
+                      </div>
+                      <!-- Controles permanecem os mesmos -->
+                      <button class="carousel-control-prev" type="button" data-bs-target="#carousel1" data-bs-slide="prev" style="width: 30px; height: 30px; top: 50%; transform: translateY(-50%); left: 10px; opacity: 0.7;">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#carousel1" data-bs-slide="next" style="width: 30px; height: 30px; top: 50%; transform: translateY(-50%); right: 10px; opacity: 0.7;">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                      </button>
+                  </div>
+                  
+                  <!-- Card body permanece igual -->
+                  <div class="card-body">
+                      <h5 class="card-title fw-bold">Porsche 911 Carrera S 2025</h5>
+                      <div class="d-flex justify-content-between align-items-center mb-2">
+                          <span class="badge bg-primary">Novo</span>
+                          <span class="text-muted">R$ 1.080.000,00</span>
+                      </div>
+                      <div class="d-flex justify-content-between text-muted small mb-3">
+                          <span><i class="fas fa-tachometer-alt me-1"></i> 0 KM</span>
+                          <span><i class="fas fa-gas-pump me-1"></i> Gasolina</span>
+                          <span><i class="fas fa-car me-1"></i>Automático DCT</span>
+                      </div>
+                      <p class="card-text">Motor 3.0, 8 marchas, 480 Cavalos, Interiror de Couro.</p>
+                  </div>
+              </div>
+          </div>
+  
+          <!-- Card 2 - MODIFICADO para usar data-bs-ride -->
+          <div class="col-12 col-md-6 col-lg-4">
+              <div class="card h-100 shadow-sm border-0 overflow-hidden">
+                  <div id="carousel2" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000">
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                          <img src="/frontend/public/images/asx1.jpg" loading="lazy" class="d-block w-100" alt="SUV" style="height: 200px; object-fit: cover;">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="/frontend/public/images/asx2.jpg" loading="lazy" class="d-block w-100" alt="SUV" style="height: 200px; object-fit: cover;">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="/frontend/public/images/asx3.jpg" loading="lazy" class="d-block w-100" alt="SUV" style="height: 200px; object-fit: cover;">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="/frontend/public/images/asx4.jpg" loading="lazy" class="d-block w-100" alt="SUV" style="height: 200px; object-fit: cover;">
+                </div>
+                      </div>
+                      <!-- Controles permanecem os mesmos -->
+                      <button class="carousel-control-prev" type="button" data-bs-target="#carousel2" data-bs-slide="prev" style="width: 30px; height: 30px; top: 50%; transform: translateY(-50%); left: 10px; opacity: 0.7;">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#carousel2" data-bs-slide="next" style="width: 30px; height: 30px; top: 50%; transform: translateY(-50%); right: 10px; opacity: 0.7;">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                      </button>
+                  </div>
+                  
+                  <!-- Card body permanece igual -->
+                  <div class="card-body">
+                      <h5 class="card-title fw-bold">SUV Mitsubishi ASX 2016</h5>
+                      <div class="d-flex justify-content-between align-items-center mb-2">
+                          <span class="badge bg-success">Semi-novo</span>
+                          <span class="text-muted">R$ 84.000,00</span>
+                      </div>
+                      <div class="d-flex justify-content-between text-muted small mb-3">
+                          <span><i class="fas fa-tachometer-alt me-1"></i> 94.000 KM</span>
+                          <span><i class="fas fa-gas-pump me-1"></i> Gasolina</span>
+                          <span><i class="fas fa-car me-1"></i> Automático</span>
+                      </div>
+                      <p class="card-text">Motor 2.0, tração 4x4, 16V, Blindado</p>
+                  </div>
+              </div>
+          </div>
+  
+          <!-- Card 3 - MODIFICADO para usar data-bs-ride -->
+          <div class="col-12 col-md-6 col-lg-4">
+              <div class="card h-100 shadow-sm border-0 overflow-hidden">
+                  <div id="carousel3" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000">
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                          <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" loading="lazy" class="d-block w-100" alt="Hatch Esportivo" style="height: 200px; object-fit: cover;">
+                      </div>
+                      <div class="carousel-item">
+                          <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" loading="lazy" class="d-block w-100" alt="Hatch Esportivo" style="height: 200px; object-fit: cover;">
+                      </div>
+                      </div>
+                      <!-- Controles permanecem os mesmos -->
+                      <button class="carousel-control-prev" type="button" data-bs-target="#carousel3" data-bs-slide="prev" style="width: 30px; height: 30px; top: 50%; transform: translateY(-50%); left: 10px; opacity: 0.7;">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#carousel3" data-bs-slide="next" style="width: 30px; height: 30px; top: 50%; transform: translateY(-50%); right: 10px; opacity: 0.7;">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                      </button>
+                  </div>
+                  
+                  <!-- Card body permanece igual -->
+                  <div class="card-body">
+                      <h5 class="card-title fw-bold">Hatch Esportivo 2023</h5>
+                      <div class="d-flex justify-content-between align-items-center mb-2">
+                          <span class="badge bg-primary">Novo</span>
+                          <span class="text-muted">R$ 95.000,00</span>
+                      </div>
+                      <div class="d-flex justify-content-between text-muted small mb-3">
+                          <span><i class="fas fa-tachometer-alt me-1"></i> 8.000 KM</span>
+                          <span><i class="fas fa-gas-pump me-1"></i> Flex</span>
+                          <span><i class="fas fa-car me-1"></i> Manual</span>
+                      </div>
+                      <p class="card-text">Motor 1.6L Turbo, rodas aro 17, acabamento esportivo.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+    <!-- Footer Moderno -->
+    <!-- Footer Moderno Atualizado -->
+<footer class="bg-dark text-white py-5 mt-5">
+  <div class="container">
+      <div class="row">
+          <!-- Sobre -->
+          <div class="col-lg-4 mb-4">
+              <h5 class="d-flex align-items-center mb-3 text-white">
+                  <i class="fas fa-car me-2 text-primary"></i>
+                  <span>Carlume</span>
+              </h5>
+              <p class="text-white">O estoque de carros premium mais completo do mercado, oferecendo os melhores veículos com transparência e qualidade.</p>
+              <div class="mt-4">
+                  <a style="text-decoration: none;" href="https://www.linkedin.com/in/boreljoao/" class="text-white me-3" target="_blank" rel="noopener noreferrer">
+                      <i class="fab fa-linkedin fa-lg"></i>
+                  </a>
+                  <a style="text-decoration: none;" href="https://github.com/boreljoao" class="text-white me-3" target="_blank" rel="noopener noreferrer">
+                      <i class="fab fa-github fa-lg"></i>
+                  </a>
+                  <a style="text-decoration: none;" href="https://contate.me/5521972868504" class="text-white me-3" target="_blank" rel="noopener noreferrer">
+                      <i class="fab fa-whatsapp fa-lg"></i>
+                  </a>
+              </div>
+          </div>
+
+          <!-- Links Úteis -->
+          <div class="col-lg-2 col-md-6 mb-4">
+              <h5 class="mb-3">Links Rápidos</h5>
+              <ul class="list-unstyled">
+                  <li class="mb-2"><a href="index.html" class="text-white-50">Início</a></li>
+                  <li class="mb-2"><a href="estoque.html" class="text-white-50">Estoque</a></li>
+                  <li class="mb-2"><a href="adicionar.html" class="text-white-50">Vender Carro</a></li>
+                  <li class="mb-2"><a href="#!" class="text-white-50">Financiamento</a></li>
+                  <li class="mb-2"><a href="#!" class="text-white-50">Contato</a></li>
+              </ul>
+          </div>
+
+          <!-- Termos e Políticas -->
+          <div class="col-lg-3 col-md-6 mb-4">
+              <h5 class="mb-3">Informações Legais</h5>
+              <ul class="list-unstyled">
+                  <li class="mb-2"><a href="#terms-modal" data-bs-toggle="modal" class="text-white-50">Termos de Uso</a></li>
+                  <li class="mb-2"><a href="#privacy-modal" data-bs-toggle="modal" class="text-white-50">Política de Privacidade</a></li>
+                  <li class="mb-2"><a href="#warranty-modal" data-bs-toggle="modal" class="text-white-50">Garantia de Veículos</a></li>
+                  <li class="mb-2"><a href="#return-policy" data-bs-toggle="modal" class="text-white-50">Política de Devolução</a></li>
+              </ul>
+          </div>
+
+          <!-- Contato -->
+          <div class="col-lg-3 col-md-6 mb-4">
+              <h5 class="mb-3">Contato</h5>
+              <ul class="list-unstyled text-white">
+                  <li class="mb-2"><i class="fas fa-map-marker-alt me-2 text-primary"></i> Rio de Janeiro, Brasil</li>
+                  <li class="mb-2"><i class="fas fa-phone me-2 text-primary"></i> (21) 97286-8504</li>
+                  <li class="mb-2"><i class="fas fa-envelope me-2 text-primary"></i> contato@carlume.com</li>
+                  <li class="mb-2"><i class="fas fa-clock me-2 text-primary"></i> Seg-Sex: 9h às 18h</li>
+              </ul>
+          </div>
+      </div>
+      
+      <hr class="my-4 bg-secondary">
+      
+      <div class="row align-items-center">
+          <div class="col-md-6 text-center text-md-start">
+              <p class="mb-0 text-white">&copy; 2023 Carlume. Todos os direitos reservados.</p>
+          </div>
+          <div class="col-md-6 text-center text-md-end text-white">
+              <p class="mb-0">Desenvolvido por <a href="https://www.linkedin.com/in/boreljoao/" class="text-decoration-none" target="_blank">João Pedro Borel</a></p>
+          </div>
+      </div>
+  </div>
+</footer>
+
+<!-- Modal Termos de Uso -->
+<div class="modal fade" id="terms-modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title">Termos de Uso</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <h6>1. Aceitação dos Termos</h6>
+              <p>Ao acessar e utilizar o site Carlume, você concorda com estes Termos de Uso e com nossa Política de Privacidade.</p>
+              
+              <h6 class="mt-4">2. Uso do Site</h6>
+              <p>O site destina-se à visualização e compra de veículos. Não é permitido:</p>
+              <ul>
+                  <li>Usar para fins ilegais ou não autorizados</li>
+                  <li>Reproduzir conteúdo sem autorização</li>
+                  <li>Realizar cadastros falsos</li>
+              </ul>
+              
+              <h6 class="mt-4">3. Propriedade Intelectual</h6>
+              <p>Todos os direitos sobre o conteúdo, design e software do site são propriedade da Carlume ou de seus licenciadores.</p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- Modal Política de Privacidade -->
+<div class="modal fade" id="privacy-modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title">Política de Privacidade</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <h6>1. Dados Coletados</h6>
+              <p>Coletamos informações pessoais como nome, e-mail, telefone e dados de veículos quando você:</p>
+              <ul>
+                  <li>Cadastra-se no site</li>
+                  <li>Anuncia um veículo</li>
+                  <li>Entra em contato conosco</li>
+              </ul>
+              
+              <h6 class="mt-4">2. Uso dos Dados</h6>
+              <p>Seus dados são usados para:</p>
+              <ul>
+                  <li>Processar transações</li>
+                  <li>Melhorar nossos serviços</li>
+                  <li>Enviar comunicações relevantes</li>
+                  <div class="galeria" id="galeria"></div>
+              </ul>
+              
+              <h6 class="mt-4">3. Segurança</h6>
+              <p>Implementamos medidas de segurança para proteger suas informações contra acesso não autorizado.</p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          </div>
+      </div>
+  </div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/frontend/public/js/scripts.js"></script>
+</body>
+</html>
